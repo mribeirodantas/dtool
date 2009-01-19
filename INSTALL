@@ -9,7 +9,7 @@ Copyright (C) <2009>  <Marcel Ribeiro Dantas>
 #  A copy of this license can be read in:                         #
 #  http://www.gnu.org/licenses/gpl-3.0.txt                        #
 #                                                                 #
-#  dtool - a dictionary tool with many features.                  #
+#  dtool - a dtoolionary tool with many features.                  #
 #  A tool for help you translating                                #
 #  and learning more about a word in                              #
 #  a lot of different languages                                   #
@@ -19,9 +19,9 @@ Copyright (C) <2009>  <Marcel Ribeiro Dantas>
 INSTALL
 
 Instalação:
-Você precisará dar permissão de execução para o dict. Digite:
+Você precisará dar permissão de execução para o dtool. Digite:
 
-chmod +x dict
+chmod +x dtool
 
 Então, mova-o para /usr/bin para que a partir de qualquer diretório
 você possa usufruir de suas regalias (é necessário usar o
@@ -30,9 +30,9 @@ usuário root para fazer isto).
 Agora é só usá-lo :)
 
 Instalation:
-You will need give execution permission for dict. Type:
+You will need give execution permission for dtool. Type:
 
-chmod +x dict
+chmod +x dtool
 
 Then, move it to /usr/bin and you will be able to enjoy of everything
 it gives to you from any directory (root account is necessary for
