@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 	
 	char command[256];
 
-	if (argc == 2 && strcmp(argv[1],"-h") == 0) {
+	if (argc == 2 && (!(strcmp(argv[1],"-h")))) {
 		
 		printf("Usage: dtool [option] [from-language] [to-language] \"word to find or translate\"\n");
 		printf("-d        dictionary option.\n");
@@ -33,16 +33,18 @@ int main(int argc, char *argv[]) {
 		printf("-t        translation option.\n");
 		printf("-p        pronunciation option\n");
 		printf("Special parameter: \n");
-		printf("dtool -p word-to-listen\n");
+		printf("dtool -p \"word/phrase to listen\"\n");
 		
 		return 0;
 	
 	}
 	
-	else if (argc == 3 && strcmp(argv[1],"-p") == 0) {
+	else if (argc == 3 && (!(strcmp(argv[1],"-p")))) {
 	
-		snprintf(command, sizeof(command), "xdg-open \"http://www.google.com/dictionary/sounds/%s.mp3\"", argv[2]);
+	/*	snprintf(command, sizeof(command), "xdg-open \"http://www.google.com/dictionary/sounds/%s.mp3\"", argv[2]); */
 		
+		snprintf(command, sizeof(command), "xdg-open \"http://www.howjsay.com/index.php?word=%s&submit=Submit\"", argv[2]);
+
 	}
 
 	else if (argc != 5 ) {

@@ -27,6 +27,8 @@ Então, mova-o para /usr/bin para que a partir de qualquer diretório
 você possa usufruir de suas regalias (é necessário usar o
 usuário root para fazer isto).
 
+# mv dtool /usr/bin
+
 Agora é só usá-lo :)
 
 Instalation:
@@ -37,5 +39,7 @@ chmod +x dtool
 Then, move it to /usr/bin and you will be able to enjoy of everything
 it gives to you from any directory (root account is necessary for
 do it).
+
+# mv dtool /usr/bin
 
 Now, just use it :)
