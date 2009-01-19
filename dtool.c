@@ -27,11 +27,13 @@ int main(int argc, char *argv[]) {
 
 	if (argc == 2 && strcmp(argv[1],"-h") == 0) {
 		
-		printf("Usage: dtool [option] [language-to] [other-language] \"word to find or translate\"\n");
+		printf("Usage: dtool [option] [from-language] [to-language] \"word to find or translate\"\n");
 		printf("-d        dictionary option.\n");
 		printf("-h        help option.\n");
 		printf("-t        translation option.\n");
 		printf("-p        pronunciation option\n");
+		printf("Special parameter: \n");
+		printf("dtool -p word-to-listen\n");
 		
 		return 0;
 	
@@ -45,7 +47,7 @@ int main(int argc, char *argv[]) {
 
 	else if (argc != 5 ) {
 		
-		printf("Usage: dtool [language-to] [other-language] word-to-find\n");
+		printf("Usage: dtool [option] [from-language] [to-language] \"word to find or translate\"\n");
 		printf("For help try: dtool -h\n");
 
 		return 0;
@@ -69,7 +71,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	else {
-		printf("Usage: dtool [option] [language-to] [other-language] \"word to find or translate\"\n");
+		printf("Usage: dtool [option] [from-language] [to-language] \"word to find or translate\"\n");
 		printf("For help try: dtool -h\n");
 		
 		return 0;
