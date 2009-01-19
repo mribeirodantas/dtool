@@ -1,13 +1,12 @@
 #summary a dictionary tool with many features.
 
 = Introduction =
+I am used to talking in IRC channels, such as #learnanylanguage on Freenode, but sometimes I would find that I wouldn't understand a word, a phrase, an idiom and                      I would have to go into my browser and search for a good online dictionary or translator to solve my problem.
 
-I'm used to talk in IRC channels on Freenode, and sometimes when I was talking in other languages I had to go to my browser, search for a good translator/dictionary/pronunciation guide to learn more about some words or idioms.
+The steps I took were:
+- Open my browser, search for a good website to help me (or someone I had recalled), write my word/phrase, choose the language, click submit and wait for the result. Then, come back to IRC and continue talking.
 
-My steps were as shown below:
-- Open my browser, search for a good website to help me (or someone I had recalled), write my word/phrase, choose the language, click submit and wait for the result. Then, come back to IRC and go on talking.
-
-Then, I started thinking how could I fix my problem, once that I would like something fast to help me avoiding me to stop my conversation when I'm preparing the data to receive the results. *Dtool* is what I made to fix that, because using Dtool (a _command line_ tool), I can even through IRC use it, for example, on Irssi I use:
+Then, I started thinking how could I fix my problem. I wanted something that would work fast, something that wouldn't interfere with the conversation that I was                       having. *Dtool* is what I made to fix that, because using Dtool (a _command line_ tool) I can enjoy it while I'm running IRC, for example, on Irssi I use:
 
 {{{
 /exec dtool -h
@@ -21,4 +20,4 @@ Dtool is licensed by GNU GPLv3 and it's free software. Read the COPYING file for
 
 = Unix philosophy =
 
-A UNIX application should be written for does ONE THING and does it well. Dtool follows this philosophy, seen that it's written for help you with language doubts with many features.
+A UNIX application should be written so that it does one thing, and does                      one thing well. Dtool follows this philosophy, by helping you with your language(s) doubts with its many features.
