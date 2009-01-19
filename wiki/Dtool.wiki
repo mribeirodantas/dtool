@@ -17,7 +17,7 @@ Then, I started thinking how could I fix my problem, once that I would like some
 
 *Dtool* intends to be ideal for a lightweight system or a system with no GUI, but it's still on alpha version. It will run your formatted data in your default browser and show you the results like the best Google tools do. The major utility, in my humble opinion, is can run everything from _command line_ or your _IRC client_.
 
-Dtool is licensed by GNU GPLv3 and it's free software. Read the COPYING file for more details. It's written in C[http://pt.wikipedia.org/wiki/C] and was compiled with GNU C Compiler (GCC).
+Dtool is licensed by GNU GPLv3 and it's free software. Read the COPYING file for more details. It's written in [http://pt.wikipedia.org/wiki/C C] and was compiled with GNU C Compiler (GCC).
 
 = Unix philosophy =
 
