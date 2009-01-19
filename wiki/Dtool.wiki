@@ -1,0 +1,20 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+I'm used to talk in IRC channels on Freenode, and sometimes when I was talking in other languages I had to go to my browser, search for a good translator/dictionary/pronunciation guide to learn more about some words or idioms.
+
+My steps were as shown below:
+- Open my browser, search for a good website to help me (or someone I had recalled), write my word/phrase, choose the language, click submit and wait for the result. Then, come back to IRC and go on talking.
+
+Then, I started thinking how could I fix my problem, once that I would like something fast to help me avoiding me to stop my conversation when I'm preparing the data to receive the results. *Dtool* is what I made to fix that, because using Dtool (a _command line_ tool), I can even through IRC use it, for example, on Irssi I use:
+
+{{{
+/exec dtool -h
+}}}
+
+= Details =
+
+*Dtool* intends to be ideal for a lightweight system or a system with no GUI, but it's still on alpha version. It will run your formatted data in your default browser and show you the results like the best Google tools do. The major utility, in my humble opinion, is can run everything from _command line_ or your _IRC client_.
+
+Dtool is licensed by GNU GPLv3 and it's free software. Read the COPYING file for more details. It's written in C[http://pt.wikipedia.org/wiki/C] and was compiled with GNU C Compiler (GCC).
