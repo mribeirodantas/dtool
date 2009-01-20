@@ -1,4 +1,4 @@
-#summary The problem when you're using dtool from your IRC Client.
+#summary The problem when you're using dtool from your IRC Client and mplayer is your default player.
 #labels Featured,Phase-Deploy
 
 = Introduction =
