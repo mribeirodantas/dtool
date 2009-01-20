@@ -24,6 +24,7 @@
 int main(int argc, char *argv[]) {
 	
 	char command[256];
+	int i;
 
 	if (argc == 2 && (!(strcmp(argv[1],"-h")))) {
 		
@@ -40,16 +41,17 @@ int main(int argc, char *argv[]) {
 	}
 	
 	else if (argc == 3 && (!(strcmp(argv[1],"-p")))) {
-		
-		snprintf(command, sizeof(command), "wget -qc http://www.google.com/dictionary/sounds/%s.mp3", argv[2]);
+	/*	snprintf(command, sizeof(command), "wget -qc http://www.google.com/dictionary/sounds/%s.mp3", argv[2]);
 		system(command);
 		command[0] = '\0';
-		snprintf(command, sizeof(command), "xdg-open %s.mp3", argv[2]);
+		snprintf(command, sizeof(command), "xdg-open %s.mp3 >> /dev/null", argv[2]);
 		system(command);
 		command[0] = '\0';
-		snprintf(command, sizeof(command), "rm %s.mp3", argv[2]);
+		snprintf(command, sizeof(command), "rm -i %s.mp3", argv[2]);
 
-	/*	snprintf(command, sizeof(command), "xdg-open \"http://www.howjsay.com/index.php?word=%s&submit=Submit\"", argv[2]); */
+		snprintf(command, sizeof(command), "xdg-open \"http://www.howjsay.com/index.php?word=%s&submit=Submit\"", argv[2]); */
+		
+		snprintf(command, sizeof(command), "xdg-open \"http://www.google.com/dictionary/sounds/%s.mp3\"", argv[2]);
 
 	}
 
