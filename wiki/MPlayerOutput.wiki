@@ -1,0 +1,23 @@
+#summary The problem when you're using dtool from your IRC Client.
+#labels Featured,Phase-Deploy
+
+= Introduction =
+
+When you run *dtool* from your IRC Client and your default player is mplayer, probably it's going to show a large output messages in your IRC Client window. It happens in almost the whole window what really make your last conversation confusing.
+
+
+= Details =
+
+You should download it from [http://dtool.googlecode.com/files/patch-mplayer here]. After download the patch, go to the dtool source directory and follow the commands below:
+
+{{{
+patch -p1 < patch-mplayer dtool.c
+}}}
+
+After it, the patch should fix your output problem. Just compile it and enjoy :)
+
+{{{
+gcc -o dtool dtool.c
+}}}
+
+_o/
