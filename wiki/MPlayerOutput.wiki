@@ -1,5 +1,5 @@
 #summary The problem when you're using dtool from your IRC Client and mplayer is your default player.
-#labels Featured,Phase-Deploy
+#labels Phase-Deploy,Deprecated
 
 = Introduction =
 
