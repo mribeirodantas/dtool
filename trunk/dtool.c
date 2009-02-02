@@ -20,14 +20,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include "config.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv, char **envp) {
 	
-	char command[256];
-	int i;
+	char command[256] = { 0 };
 
 	if (argc == 2 && (!(strcmp(argv[1],"-h")))) {
-		
 		printf("Usage: dtool [option] [from-language] [to-language] \"word to find or translate\"\n");
 		printf("-d        dictionary option.\n");
 		printf("-h        help option.\n");
@@ -35,10 +35,8 @@ int main(int argc, char *argv[]) {
 		printf("-p        pronunciation option\n");
 		printf("Special parameter: \n");
 		printf("dtool -p \"word/phrase to listen\"\n");
-		
-		return 0;
-	
-	}
+	    exit(0);
+    }
 	
 	else if (argc == 3 && (!(strcmp(argv[1],"-p")))) {
 		snprintf(command, sizeof(command), "wget -qc http://www.google.com/dictionary/sounds/%s.mp3", argv[2]);
@@ -47,49 +45,33 @@ int main(int argc, char *argv[]) {
 		snprintf(command, sizeof(command), "xdg-open %s.mp3 &> /dev/null", argv[2]);
 		system(command);
 		command[0] = '\0';
-		snprintf(command, sizeof(command), "rm -i %s.mp3", argv[2]);
-	/*
-		snprintf(command, sizeof(command), "xdg-open \"http://www.howjsay.com/index.php?word=%s&submit=Submit\"", argv[2]); 
-		
-		snprintf(command, sizeof(command), "xdg-open \"http://www.google.com/dictionary/sounds/%s.mp3\"", argv[2]); */
-
-	}
+#ifndef KEEP_FILES
+		snprintf(command, sizeof(command), "rm -f %s.mp3", argv[2]);
+#endif
+    }
 
 	else if (argc != 5 ) {
-		
 		printf("Usage: dtool [option] [from-language] [to-language] \"word to find or translate\"\n");
 		printf("For help try: dtool -h\n");
-
-		return 0;
-	
-	}
+	    exit(1);
+    }
 		
-	else if (!(strcmp(argv[1],"-d"))) {
-	
+	else if (!(strcmp(argv[1],"-d"))) 
 		snprintf(command, sizeof(command), "xdg-open \"http://www.google.com/dictionary?aq=f&langpair=%s%%7C%s&q=%s&hl=en\"", argv[2], argv[3], argv[4]);
-	}
 
-	else	if (!(strcmp(argv[1],"-t"))) {
-
+	else if (!(strcmp(argv[1],"-t")))
 		snprintf(command, sizeof(command), "xdg-open \"http://translate.google.com/translate_t#%s|%s|%s\"", argv[2], argv[3], argv[4]);
-	}
 
-	else if (!(strcmp(argv[1],"-p"))) {
-	
+	else if (!(strcmp(argv[1],"-p")))
 		snprintf(command, sizeof(command), "xdg-open \"http://www.google.com/dictionary/sounds/%s\"", argv[2],".mp3");
-
-	}
 
 	else {
 		printf("Usage: dtool [option] [from-language] [to-language] \"word to find or translate\"\n");
 		printf("For help try: dtool -h\n");
-		
-		return 0;
-		
+	    exit(0);	
 	}
 
-      system(command);
+    system(command);
 	
 	return 0;
-
 }
