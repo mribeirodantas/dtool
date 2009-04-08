@@ -4,12 +4,12 @@ Copyright (C) <2009>  <Marcel Ribeiro Dantas>
 #  Author: Marcel Ribeiro Dantas <vuln at slackware-rn.com.br>    #
 #  Website: http://www.slackware-rn.com.br/~vuln                  #
 #  This code is licensed under GNU GPLv3 and any other            #
-#  version of this license.                                       #
+#  version of this license released by FSF.                       #
 #                                                                 #
 #  A copy of this license can be read in:                         #
 #  http://www.gnu.org/licenses/gpl-3.0.txt                        #
 #                                                                 #
-#  dtool - a dtoolionary tool with many features.                  #
+#  dtool - a dtoolionary tool with many features.                 #
 #  A tool for help you translating                                #
 #  and learning more about a word in                              #
 #  a lot of different languages                                   #
@@ -18,27 +18,27 @@ Copyright (C) <2009>  <Marcel Ribeiro Dantas>
 
 INSTALL
 
-Instala√ß√£o:
-Voc√™ precisar√° dar permiss√£o de execu√ß√£o para o dtool. Digite:
+InstalaÁ„o:
+Execute a instalaÁ„o da ferramenta com o comando abaixo:
 
-chmod +x dtool
+make dtool
 
-Ent√£o, mova-o para /usr/bin para que a partir de qualquer diret√≥rio
-voc√™ possa usufruir de suas regalias (√© necess√°rio usar o
-usu√°rio root para fazer isto).
+Ent„o, mova o dtool (execut·vel) para /usr/bin para que a partir de qualquer
+diretÛrio vocÍ possa usufruir de suas regalias (È necess·rio usar o
+usu·rio root para mover para /usr/bin).
 
 # mv dtool /usr/bin
 
-Agora √© s√≥ us√°-lo :)
+Agora È sÛ us·-lo :)
 
 Instalation:
-You will need give execution permission for dtool. Type:
+Run the tool installer with the command below:
 
-chmod +x dtool
+make dtool
 
-Then, move it to /usr/bin and you will be able to enjoy of everything
-it gives to you from any directory (root account is necessary for
-do it).
+Then, move dtool (executable) to /usr/bin and you will be able to enjoy of
+everything it gives to you from any directory (root account is necessary for
+move to /usr/bin).
 
 # mv dtool /usr/bin
 
