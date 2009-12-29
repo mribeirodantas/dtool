@@ -2,16 +2,16 @@ TODO
 -------------------------------------------------------------- 
 
 [1] Download the html returned by google, and parse it, instead of using a web
-browser to see it's content
-    State: open
+browser to see its content.
+    Status: open
 
 [2] While we don't fix the entry [1], we would use something instead of system
-    State: open
+    Status: open
 
-[3] Create something like a library; so other softwares would be able to do what
+[3] Create something like a library; so other softwares will be able to do what
 dtool does.
-    State: open
+    Status: open
 
 [4] Create a function to translate passed arguments like: 'english' to 'en',
 etc.
-    State: open
+    Status: open
