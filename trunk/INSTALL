@@ -1,27 +1,29 @@
-Copyright (C) <2009>  <Marcel Ribeiro Dantas>
-###################################################################
-#                                                                 #
-#  Author: Marcel Ribeiro Dantas <vuln at slackware-rn.com.br>    #
-#  Website: http://www.slackware-rn.com.br/~vuln                  #
-#  This code is licensed under GNU GPLv3 and any other            #
-#  version of this license released by FSF.                       #
-#                                                                 #
-#  A copy of this license can be read in:                         #
-#  http://www.gnu.org/licenses/gpl-3.0.txt                        #
-#                                                                 #
-#  dtool - a dtoolionary tool with many features.                 #
-#  A tool for help you translating                                #
-#  and learning more about a word in                              #
-#  a lot of different languages                                   #
-#                                                                 #
-###################################################################
+Copyright (C) <2009, 2010>  <Marcel Ribeiro Dantas>
+####################################################################
+#                                                                  #
+#  Author:  Marcel Ribeiro Dantas <marcel at ribeirodantas.com.br> #
+#  Website: http://www.ribeirodantas.com.br/blog                   #
+#  This code is licensed under GNU GPLv3 or any other newer        #
+#  version of this license released of your choice (GPLv3+).       #
+#                                                                  #
+#  A copy of the license can be read in:                           #
+#  http://www.gnu.org/licenses/gpl-3.0.txt                         #
+#  or in the COPYING file which should follow with this			   #
+#  source file one.												   #	
+#                                                                  #  
+#  dtool - a dictionary tool with many features.                   # 
+#  A tool for help you translating                                 # 
+#  and learning more about a word in                               #  
+#  a lot of different languages                                    #
+#                                                                  #
+####################################################################
 
 INSTALL
 
 Instalação:
 Execute a instalação da ferramenta com o comando abaixo:
 
-make dtool
+$ make dtool
 
 Então, mova o dtool (executável) para /usr/bin para que a partir de qualquer
 diretório você possa usufruir de suas regalias (é necessário usar o
@@ -29,17 +31,25 @@ usuário root para mover para /usr/bin).
 
 # mv dtool /usr/bin
 
+Crie o diretório de dados do dtool.
+
+$ mkdir ~/.dtool
+
 Agora é só usá-lo :)
 
 Instalation:
 Run the tool installer with the command below:
 
-make dtool
+$ make dtool
 
 Then, move dtool (executable) to /usr/bin and you will be able to enjoy of
 everything it gives to you from any directory (root account is necessary for
 move to /usr/bin).
 
 # mv dtool /usr/bin
+
+Create the dtool data dir.
+
+$ mkdir ~/.dtool
 
 Now, just use it :)
