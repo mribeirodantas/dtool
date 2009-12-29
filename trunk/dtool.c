@@ -30,6 +30,7 @@ void dictionary(char*, char*, char*);
 void pronunciation(char* );
 void translation(char*, char*, char*);
 void usage(void);
+void dircheck(void);
 
 char buffer[256] = "0";
 
@@ -54,12 +55,15 @@ int main (int argc, char* argv[]) {
 		};
 		/* getopt_long stores the option index here. */
 		int option_index = 0;
-		c = getopt_long(argc, argv, "d:p:t:f:T:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "d:p:T:f:t:h", long_options, &option_index);
 		/* : to required argument. :: to optional */
 		if (c == -1) { break; }
     	switch (c) {
 			case 'd':
-				dictionary(optarg, argument2, argument3);
+				if ((argument2 == NULL) || (argument3 == NULL)) 
+					dictionary(optarg, "en", "en");
+				else	
+					dictionary(optarg, argument2, argument3);
 				break;
 			case 'p':
 				pronunciation(optarg);
@@ -97,26 +101,27 @@ void run(const char* fmt, ...) {
 	va_end(l);
 	flag = system(buffer);
 	if (flag) { 
-		printf("The word you prompted maybe isn't in our data base\n");
-		printf("or you have not created the .dtool directory in your\n");
-		printf("home directory. Do it typing mkdir ~/.dtool\n");
+		fprintf(stderr, "The word you prompted is not in our data base, or\n");
+		fprintf(stderr, "you should check for your internet connection.\n");
 		exit(1);
 	}
 }
 
 void dictionary(char* word, char* source, char* destiny) {
+	dircheck();
 	run("xdg-open \"http://www.google.com/dictionary?aq=f&langpair=%s%%7C%s&q=%s&hl=%s\"",
-	source, source, word, destiny);
-	run("echo %s >> ~/.dtool/.dic", word);
+	source, destiny, word, destiny); /* ou s s w d? */
+	run("`echo %s >> ~/.dtool/.dic` &> /dev/null", word); /* avoid run error msg */
 }
 
 void pronunciation(char* word) {
+	dircheck();
 	run("wget -nc -qc http://www.google.com/dictionary/sounds/%s.mp3", word);
 	run("mv %s.mp3 ~/.dtool/ &> /dev/null", word);
 	run("ffplay -vn -nodisp ~/.dtool/%s.mp3 &> /dev/null", word);
-	run("echo %s >> ~/.dtool/.pron", word);
+	run("`echo %s >> ~/.dtool/.pron` &> /dev/null", word); /* and show the mv one */
 #ifndef KEEP_FILES
-	run("rm -f %s.mp3", word);
+	run("rm -f ~/.dtool/%s.mp3", word);
 #endif
 }
 
@@ -133,4 +138,15 @@ void usage(void) {
 	printf("--to\t\t-t\tto what language you want to translate\n");
 	printf("--help\t\t-h\thelp option.\n");
 	exit(0);
+}
+
+void dircheck() {
+	FILE *stream;
+	char home_dir[64];
+	snprintf(home_dir, sizeof(home_dir), "%s/.dtool", getenv("HOME"));
+	if (!(stream = fopen(home_dir,"r"))) {
+		fprintf(stderr, "The ~/.dtool directory is nonexistent.\n");
+		exit(1);
+	}
+	fclose(stream);
 }
