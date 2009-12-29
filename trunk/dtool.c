@@ -26,13 +26,14 @@
 #include "config.h"
 
 void run(const char* fmt, ...);
-void dictionary(char*, char*, char*);
-void pronunciation(char* );
-void translation(char*, char*, char*);
+void dictionary(const char*, const char*, const char*);
+void pronunciation(const char* );
+void translation(const char*, const char*, const char*);
 void usage(void);
 void dircheck(void);
 
 char buffer[256] = "0";
+char const home_dir[64];
 
 int main (int argc, char* argv[]) {
 	char *argument2 = NULL, *argument3 = NULL;
@@ -88,7 +89,7 @@ int main (int argc, char* argv[]) {
 		}
     }
     for (index = optind; index < argc; index++)
-	printf ("Non-option argument %s\n", argv[index]);
+	fprintf(stderr, "Non-option argument %s\n", argv[index]);
 	return EXIT_SUCCESS;
 }
 
@@ -107,25 +108,27 @@ void run(const char* fmt, ...) {
 	}
 }
 
-void dictionary(char* word, char* source, char* destiny) {
+void dictionary(const char* word, const char* source, const char* destiny) {
 	dircheck();
 	run("xdg-open \"http://www.google.com/dictionary?aq=f&langpair=%s%%7C%s&q=%s&hl=%s\"",
 	source, destiny, word, destiny); /* ou s s w d? */
-	run("`echo %s >> ~/.dtool/.dic` &> /dev/null", word); /* avoid run error msg */
+	run("`echo %s - %s/%s >> %s/.dic` &> /dev/null", word, source, destiny, home_dir);
+	/* avoid run error msg */
 }
 
-void pronunciation(char* word) {
+void pronunciation(const char* word) {
 	dircheck();
 	run("wget -nc -qc http://www.google.com/dictionary/sounds/%s.mp3", word);
-	run("mv %s.mp3 ~/.dtool/ &> /dev/null", word);
-	run("ffplay -vn -nodisp ~/.dtool/%s.mp3 &> /dev/null", word);
-	run("`echo %s >> ~/.dtool/.pron` &> /dev/null", word); /* and show the mv one */
+	run("mv %s.mp3 %s &> /dev/null", word, home_dir);
+	run("ffplay -vn -nodisp %s/%s.mp3 &> /dev/null", home_dir, word);
+	run("`echo %s >> %s/.pron` &> /dev/null", word, home_dir);
+	/* and show the mv one */
 #ifndef KEEP_FILES
-	run("rm -f ~/.dtool/%s.mp3", word);
+	run("rm -f %s/%s.mp3", home_dir, word);
 #endif
 }
 
-void translation(char* phrase, char* source, char* destiny) {
+void translation(const char* phrase, const char* source, const char* destiny) {
 	run("xdg-open \"http://translate.google.com/translate_t#%s|%s|%s\"", source, destiny, phrase);
 }
 
@@ -142,11 +145,15 @@ void usage(void) {
 
 void dircheck() {
 	FILE *stream;
-	char home_dir[64];
-	snprintf(home_dir, sizeof(home_dir), "%s/.dtool", getenv("HOME"));
+	static int x=1;
+
+	if (x!=0) {
+		snprintf(home_dir, sizeof(home_dir), "%s/.dtool", getenv("HOME"));
+	}
 	if (!(stream = fopen(home_dir,"r"))) {
-		fprintf(stderr, "The ~/.dtool directory is nonexistent.\n");
+		fprintf(stderr, "The %s/.dtool directory is nonexistent.\n", home_dir);
 		exit(1);
 	}
 	fclose(stream);
+	x=0;
 }
