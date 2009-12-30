@@ -33,12 +33,11 @@ void usage(void);
 void dircheck(void);
 
 char buffer[256] = "0";
-char const home_dir[64];
+char home_dir[64] = "0";
 
 int main (int argc, char* argv[]) {
 	char *argument2 = NULL, *argument3 = NULL;
-    int index;
-    int c;
+    int index, c, option_index=0; /* variables to getopt_long */
     if (argc == 1) { 
 		printf("Usage: dtool [from-language] [to-language] [option] \"word or phrase\"\n");
 		printf("For help try: dtool --help\n");
@@ -54,12 +53,9 @@ int main (int argc, char* argv[]) {
 			{"help",			no_argument,		0,	'h'},
 			{0,					0,					0,	0}
 		};
-		/* getopt_long stores the option index here. */
-		int option_index = 0;
 		c = getopt_long(argc, argv, "d:p:T:f:t:h", long_options, &option_index);
-		/* : to required argument. :: to optional */
-		if (c == -1) { break; }
-    	switch (c) {
+		if (c == -1) { break; } /* end of argument reading */
+	    switch (c) {
 			case 'd':
 				if ((argument2 == NULL) || (argument3 == NULL)) 
 					dictionary(optarg, "en", "en");
@@ -82,12 +78,12 @@ int main (int argc, char* argv[]) {
 				usage();
 				break;
 			case '?':
-				/* getopt_long already printed an error message. */
+				/* getopt_long, different from getopt already printed an error message. */
 				break;
 			default:
 				abort ();
 		}
-    }
+  	}
     for (index = optind; index < argc; index++)
 	fprintf(stderr, "Non-option argument %s\n", argv[index]);
 	return EXIT_SUCCESS;
@@ -100,6 +96,7 @@ void run(const char* fmt, ...) {
 	va_start(l, fmt);
 	vsnprintf(buffer, sizeof(buffer), fmt, l); 
 	va_end(l);
+
 	flag = system(buffer);
 	if (flag) { 
 		fprintf(stderr, "The word you prompted is not in our data base, or\n");
@@ -113,7 +110,7 @@ void dictionary(const char* word, const char* source, const char* destiny) {
 	run("xdg-open \"http://www.google.com/dictionary?aq=f&langpair=%s%%7C%s&q=%s&hl=%s\"",
 	source, destiny, word, destiny); /* ou s s w d? */
 	run("`echo %s - %s/%s >> %s/.dic` &> /dev/null", word, source, destiny, home_dir);
-	/* avoid run error msg */
+		/* `` avoid run error msg */
 }
 
 void pronunciation(const char* word) {
@@ -122,7 +119,7 @@ void pronunciation(const char* word) {
 	run("mv %s.mp3 %s &> /dev/null", word, home_dir);
 	run("ffplay -vn -nodisp %s/%s.mp3 &> /dev/null", home_dir, word);
 	run("`echo %s >> %s/.pron` &> /dev/null", word, home_dir);
-	/* and show the mv one */
+		/* `` show the mv one */
 #ifndef KEEP_FILES
 	run("rm -f %s/%s.mp3", home_dir, word);
 #endif
