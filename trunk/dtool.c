@@ -132,7 +132,7 @@ void pronunciation(char* word) {
 	filecheck(word);
 	run("wget -nc -qc http://www.google.com/dictionary/sounds/%s.mp3", word);
 	run("mv %s.mp3 %s &> /dev/null", word, dir);
-	run("ffplay %s%s.mp3 &> /dev/null", dir, word);
+	run("ffplay %s &> /dev/null", dir);
 	run("`echo %s >> %s/.pron` &> /dev/null", word, dir);
 		/* `` show the mv one */
 #ifndef KEEP_FILES
